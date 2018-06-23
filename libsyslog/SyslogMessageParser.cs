@@ -317,7 +317,7 @@ namespace libsyslog
 
         internal static readonly Parser<SyslogMessage> Message =
             from header in Header
-            from message in Parse.AnyChar.AtLeastOnce().End()
+            from message in Parse.AnyChar.Many().End()
             select
                 new SyslogMessage
                 {
