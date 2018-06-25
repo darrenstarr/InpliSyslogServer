@@ -122,8 +122,10 @@ namespace libsyslog.tests
         [Fact]
         public void ParseEmptyMessage()
         {
-            var input = "<191>61317:  ";
-            var x = SyslogMessageParser.Message.Parse(input);
+            var x = SyslogMessageParser.Message.Parse("<191>61317:  ");
+            Assert.Empty(x.Message);
+
+            x = SyslogMessageParser.Message.Parse("<191>61506:  ");
             Assert.Empty(x.Message);
         }
     }
